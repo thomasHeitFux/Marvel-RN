@@ -1,7 +1,8 @@
-import { GET_CHARACTERS } from "./Actions";
+import { GET_CHARACTERS, ADD_FAVORITE,REMOVE_FAVORITE } from "./Actions";
 
 const initialState = {
-    characters: []
+    characters: [],
+    favorites: []
 }
 
 function userReducer(state = initialState, action) {
@@ -12,7 +13,21 @@ function userReducer(state = initialState, action) {
                 ...state,
                 characters: action.payload
             }
-            default: return state
+        case ADD_FAVORITE:
+        
+            return {
+                ...state,
+                favorites:[...state.favorites, action.payload]
+            }
+
+            case REMOVE_FAVORITE:
+            const filtered =state.favorites.filter(e=>{e.id!==action.payload})
+            return {
+                ...state,
+                favorites: filtered
+            }
+
+        default: return state
     }
 }
 export default userReducer;

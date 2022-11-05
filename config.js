@@ -2,6 +2,7 @@ import md5 from 'md5';
 // Toma los valores de la clave pública y provada desde el archivo .env
 import { publicKey, privateKey } from '@env';
 
+
 const ts = Date.now();
 // Generamos el hash que nos pide la API pasandole como parámetro 
 // a la función md5 un string que concatene el ts + privateKey + publicKey

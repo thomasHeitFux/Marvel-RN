@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import { Text, View } from 'react-native';
@@ -22,8 +21,8 @@ export default function Detail({ route }) {
   useEffect(() => {
     axios.get(`${baseURL}/v1/public/characters/${route.params.id}`, {
       params: {
-        ts,
         apikey,
+        ts,
         hash
       }
     })
@@ -32,7 +31,6 @@ export default function Detail({ route }) {
       .finally(() => setLoading(false));
   }, []);
 
-  // console.log(data)
 
   return (
     <Tab.Navigator
@@ -62,9 +60,9 @@ export default function Detail({ route }) {
         }
       </Tab.Screen>
 
-      <Tab.Screen 
-        name="Comics" 
-       
+      <Tab.Screen
+        name="Comics"
+
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
@@ -72,13 +70,13 @@ export default function Detail({ route }) {
           )
         }}
       >
-        {() => 
-          (isLoading
-            ? <ActivityIndicator size="large" color="#0000ff" /> 
-            : <Comics
-                listComics={data?.comics?.items} 
-              />
-          )
+        {() =>
+        (isLoading
+          ? <ActivityIndicator size="large" color="#0000ff" />
+          : <Comics
+            listComics={data?.comics?.items}
+          />
+        )
         }
       </Tab.Screen>
 
