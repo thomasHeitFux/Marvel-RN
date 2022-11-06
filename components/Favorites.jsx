@@ -13,7 +13,7 @@ export default function Favorites() {
         setLoading(false)
     }, 1000);
     return (
-      loading?<>loading...</>:
+      loading?<></>:
       <>
       <FlatList
           data={favorites}
@@ -23,7 +23,7 @@ export default function Favorites() {
               id={item.id}
               image={item.image}
               name={item.name} 
-              isIn={true}/>
+              />
               )}
               />
   </>
